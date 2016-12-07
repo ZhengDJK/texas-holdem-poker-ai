@@ -2,21 +2,31 @@ package edu.ntnu.texasai.model;
 
 import edu.ntnu.texasai.controller.PlayerController;
 import edu.ntnu.texasai.model.cards.Card;
+import edu.ntnu.texasai.utils.MySocket;
 
+import java.io.IOException;
+import java.net.Socket;
 import java.util.Arrays;
 import java.util.List;
 
 public class Player {
     private final int number;
-    private final PlayerController playerController;
+    private  PlayerController playerController;
     private int money;
     private List<Card> holeCards;
+    private MySocket socket;
 
     public Player(int number, int initialMoney,
             PlayerController playerController) {
         this.number = number;
         this.money = initialMoney;
         this.playerController = playerController;
+    }
+
+    public Player(int number,int initialMoney,Socket socket) throws IOException {
+        this.number=number;
+        this.money=initialMoney;
+        this.socket=new MySocket(socket);
     }
 
     @Override

@@ -45,7 +45,6 @@ public class BettingRound {
 
         if (bet > highestBet) {
             highestBet = bet;
-
         } else if (bet < highestBet) {
             throw new IllegalArgumentException(
                     "You can't bet less than the higher bet");
